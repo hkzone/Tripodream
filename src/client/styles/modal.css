@@ -1,0 +1,169 @@
+/* The Modal (background) */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.modalSpinner {
+  cursor: url('./../images/Spinner-1s-32px.svg'), auto;
+  width: 100%;
+  height: 100%;
+}
+/* Modal Content/Box */
+.modal_content {
+  background-color: var(--background-color);
+  border: 1px solid var(--color-grey);
+  margin: auto 2%;
+  padding: 1rem;
+}
+
+/* The Close Button */
+.close {
+  color: var(--button-color-grey);
+  float: right;
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+}
+
+.close:hover,
+.close:focus,
+.button_small:hover,
+.button_small:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add and Delete buttons */
+.button_small {
+  color: var(--button-color-grey);
+  margin-left: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.modal_title {
+  margin: 1rem auto 1rem;
+}
+
+.modal_title:first-letter {
+  text-transform: capitalize;
+}
+
+#inputDiv {
+  width: 92%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#userinput {
+  width: 100%;
+}
+
+#notes {
+  height: auto;
+
+  width: 100%;
+  background: #fff;
+  border-radius: 3px;
+  border: none;
+  box-shadow: var(--box-shadow);
+  padding: 0.3rem 0.4rem;
+  margin-top: 1.6rem;
+}
+
+#ul-packinglist {
+  width: 92%;
+  margin: 0 auto 1rem;
+  list-style-type: none;
+  text-align: left;
+}
+
+#ul-packinglist li {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0 0.5rem;
+}
+
+.list {
+  padding: 0.2rem 0 0;
+  border-bottom: 1px solid var(--color-grey);
+  width: 100%;
+}
+
+.list:nth-child(odd) {
+  /* color: #777; */
+}
+.list:nth-child(even) {
+  /* background: var(--clr-grey-3); */
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.flight_airline {
+  font-size: var(--normal-font-size);
+  font-weight: 700;
+  color: var(--clr-grey-1);
+}
+
+.flight_header,
+.flight_departure,
+.flight_arrival {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.flight_icon,
+.flight_dep_time,
+.flight_arr_time {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 3rem;
+  justify-content: center;
+  /* background-color: var(--color-grey); */
+}
+.flight_icon {
+  font-size: 2.5rem;
+}
+
+.flight_information,
+.flight_dep,
+.flight_arr {
+  margin-left: 1rem;
+  width: 100%;
+  /* background-color: var(--color-grey); */
+}
+
+.flight_date {
+  font-size: var(--small-font-size);
+}
+/*=============== BREAKPOINTS ===============*/
+
+/* For small devices */
+@media screen and (min-width: 576px) {
+  .modal_content {
+    margin: auto;
+    width: 35rem;
+    border-radius: var(--panel-radius);
+  }
+}
+/* For larger */
+@media screen and (min-width: 968px) {
+  .modal_content {
+    width: 42rem;
+  }
+}
