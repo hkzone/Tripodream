@@ -1,8 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -14,6 +13,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[name][ext]',
+    libraryTarget: 'var',
+    library: 'Client',
   },
   module: {
     rules: [
@@ -37,9 +38,21 @@ module.exports = {
       template: './src/client/views/index.html',
       filename: 'index.html',
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new CopyPlugin({
       patterns: [{ from: './src/client/images', to: './images' }],
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    host: 'localhost', // Defaults to `localhost`
+    port: 8081, // Defaults to 8080
+    proxy: {
+      '/api/*': {
+        target: 'http://localhost:3000/',
+        secure: false,
+      },
+    },
+  },
 };

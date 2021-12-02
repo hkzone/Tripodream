@@ -1,0 +1,58 @@
+.side_container {
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+.my_trips {
+  margin: 1rem 0;
+}
+
+#entryHolder {
+  margin: 1rem 0.4rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 1rem;
+  justify-items: center;
+  line-height: 1.5;
+}
+
+.card {
+  margin-bottom: 1rem;
+  width: 100%;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.card_image {
+  position: relative;
+  overflow: hidden;
+  padding: 66.67% 0 0 0;
+  justify-content: center;
+  border-radius: $panel-radius $panel-radius 0 0;
+}
+
+.card_image img {
+  display: block;
+  min-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+}
+
+.card_footer {
+  margin: 0.5rem 0 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .side_container {
+    max-height: none;
+    overflow-y: hidden;
+    grid-gap: 0.3rem;
+  }
+  .card {
+    max-width: 100%;
+  }
+}

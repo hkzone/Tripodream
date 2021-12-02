@@ -1,3 +1,6 @@
+// ********************************************************************************************** //
+// ***************** return name of the icon based on api weather code provided ***************** //
+// ********************************************************************************************** //
 const weatherIcon = (code) => {
   let icon = '';
   switch (true) {
@@ -16,7 +19,7 @@ const weatherIcon = (code) => {
     case code < 800:
       icon = 'fog';
       break;
-    case code == 800:
+    case code === 800:
       icon = 'clear';
       break;
     case code <= 900:

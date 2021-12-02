@@ -1,0 +1,66 @@
+#currentTripWrapper {
+  display: inline-block;
+  width: 90%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-bottom: 1rem;
+  visibility: hidden;
+}
+
+.tripDetails {
+  border-radius: $panel-radius;
+  margin-top: 1rem;
+  height: auto;
+  margin: 8%;
+  padding: 1.5rem 3rem 1.2rem;
+  background: $background-color-gradient;
+  opacity: 0.92 !important;
+  line-height: 1.5;
+}
+
+.hr {
+  height: 1px;
+  color: $clr-grey-6;
+  background-color: $clr-grey-6;
+  border: none;
+  margin: 0.1rem 0 0.4rem;
+}
+
+.cur_forecast {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+#high_temp,
+#low_temp {
+  font-size: 2.1rem;
+}
+
+#message_forecast {
+  margin-bottom: 1rem;
+}
+
+.trip_options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.flight_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.flight_info {
+  font-size: $small-font-size;
+}
+
+@media only screen and (min-width: 768px) {
+  #currentTripWrapper {
+    max-width: 30rem;
+  }
+}

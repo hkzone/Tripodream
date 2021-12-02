@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -18,6 +19,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'images/[name][ext]',
+    libraryTarget: 'var',
+    library: 'Client',
   },
   module: {
     rules: [
@@ -53,5 +56,6 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: './src/client/images', to: './images' }],
     }),
+    new WorkboxPlugin.GenerateSW(),
   ],
 };

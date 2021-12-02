@@ -1,84 +1,82 @@
 import { fetchLocationImages } from './apiCalls';
-import { currentData } from './localStorage';
-import { dateToString, daysUntil } from './date';
-import weatherIcon from './weatherIcon';
+import {
+  updateLocalStorage,
+  state,
+  stateAddTrip,
+  stateAddToCurrent,
+  stateClearCurrent,
+} from './userData';
+import cardComponent from './Components/card';
+import { updateTrip } from './tripModel';
+import generateCard from './generateCard';
 
-const apiKeyPixabay = '24117524-a6ef2b73885d93dcc5792a808';
-const urlPixabayApi =
-  'https://pixabay.com/api/?image_type=photo&orientation=horizontal&';
+// ********************************************************************************************** //
+// **************************************** Save new trip *************************************** //
+// ********************************************************************************************** //
+const saveNewTrip = (event) => {
+  const id = event.target.getAttribute('data-id');
+  const packingList = {
+    packingList: document.querySelectorAll(
+      `[data-id='${id}'][data-type='p_list']`
+    )[0].value,
+  };
+  const notes = {
+    notes: document.querySelectorAll(`[data-id='${id}'][data-type='notes']`)[0]
+      .value,
+  };
+  const flights = {
+    flights: document.querySelectorAll(
+      `[data-id='${id}'][data-type='flights']`
+    )[0].value,
+  };
+  // *********************** add to current data in state input by the user *********************** //
+  stateAddToCurrent({
+    packingList,
+    notes,
+    flights,
+    id: new Date().getTime().toString(),
+  });
 
+  generateCard(state.currentData);
+  //TODO: make this work through api calls
+  stateAddTrip(state.currentData);
+
+  updateLocalStorage();
+  stateClearCurrent();
+  document.getElementById('currentTripWrapper').style.visibility = 'hidden';
+};
+
+// ********************************************************************************************** //
+// ******************************** Update UI to display new trip ******************************* //
+// ********************************************************************************************** //
 const updateUI = async () => {
-  const request = await fetch('/all');
   try {
-    const mainWrapper = document.getElementById('currentTripWrapper');
+    // *************************** get current search data from api server ************************** //
+    const request = await fetch('/api/all');
     const allData = await request.json();
-    const id = new Date().getTime().toString();
 
-    let image = await fetchLocationImages(
-      urlPixabayApi,
-      apiKeyPixabay,
-      `${allData.city}+${allData.country}`
-    );
+    // ******************************* get image for searched location ****************************** //
+    let image = await fetchLocationImages(`${allData.city}+${allData.country}`);
     if (image === null) {
-      image = await fetchLocationImages(
-        urlPixabayApi,
-        apiKeyPixabay,
-        allData.country
-      );
+      image = await fetchLocationImages(allData.country);
     }
 
-    currentData = {
-      ...currentData,
-      allData,
-      image,
-    };
-
-    let daysAway = daysUntil(currentData.startDate);
-    let forecastOrCurrent = '';
-
-    document.getElementById(
-      'destination'
-    ).innerHTML = `<span class='big_slash'>/</span>${allData.city}, ${allData.country}`;
-    document.getElementById('departing').innerText = `Departing: ${dateToString(
-      currentData.startDate,
-      true
-    )}`;
-    document.getElementById(
-      'currentTripWrapper'
-    ).style.backgroundImage = `url('${image.src}')`;
-
-    document.getElementById(
-      'days-away'
-    ).innerText = `This trip is ${daysAway} day(s) away!`;
-
-    if (daysAway < 16 && daysAway >= 0) {
-      forecastOrCurrent = 'forecasted';
-    } else {
-      daysAway = 0;
-      forecastOrCurrent = 'current';
-    }
-    document.getElementById(
-      'high_temp'
-    ).innerText = `${currentData.allData.weatherData.data[daysAway].high_temp}°`;
-    document.getElementById(
-      'low_temp'
-    ).innerText = `${currentData.allData.weatherData.data[daysAway].low_temp}°`;
-    document.getElementById('temp_icon').src = `./images/${weatherIcon(
-      currentData.allData.weatherData.data[daysAway].weather.code
-    )}.svg`;
-    document.getElementById(
-      'message_forecast'
-    ).innerText = `The ${forecastOrCurrent}  weather is ${currentData.allData.weatherData.data[
-      daysAway
-    ].weather.description.toLowerCase()}`;
-
-    document.getElementById('pack_list_btn').innerText = 'Add packing list';
-    document.getElementById('note_btn').innerText = 'Add note';
-
-    document.getElementById('flight_btn').setAttribute('data-id', id);
-    mainWrapper.setAttribute('data-id', `${id}-wrapper`);
-    //Show
+    // ***************************** display information on current trip **************************** //
+    stateAddToCurrent({ allData, image });
+    const mainWrapper = document.getElementById('currentTripWrapper');
+    mainWrapper.innerHTML = cardComponent(state.currentData, 'tripDetails');
+    mainWrapper.style.backgroundImage = `url('${image.src}')`;
+    mainWrapper.setAttribute('data-id', `${state.currentData.id}-wrapper`);
     mainWrapper.style.visibility = 'visible';
+
+    // ************************** Event listener for clicks on current trip ************************** //
+    mainWrapper.addEventListener('click', (event) => {
+      const { classList } = event.target;
+      if (classList.contains('update_data')) updateTrip(event, 'current');
+      else if (classList.contains('save-btn')) saveNewTrip(event);
+      else if (classList.contains('cancel-btn')) mainWrapper.innerHTML = '';
+      // else if (classList.contains('download_data')) downloadTrip(event);
+    });
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log('error', error);

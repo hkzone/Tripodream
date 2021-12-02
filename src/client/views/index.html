@@ -39,47 +39,19 @@
               <input type="date" class="input_field" id="end-date" required />
               <label class="input_label" for="end-date">End Date</label>
             </div> -->
+              <p id="message"></p>
               <div class="form-btn">
-                <button id="generate" type="submit">&#x1F50D;</button>
+                <button
+                  id="generate"
+                  onclick="return Client.handleSubmit(event)"
+                >
+                  &#x1F50D;
+                </button>
               </div>
             </form>
           </div>
-
           <!-- Show trip details -->
-          <div id="currentTripWrapper" class="panel">
-            <section class="tripDetails">
-              <h3 id="destination"></h3>
-              <h5 id="departing"></h5>
-              <div class="flight_container"></div>
-              <hr id="current_trip_hr" class="hr" />
-              <div>
-                <span id="days-away" class="currentTripDates"></span>
-              </div>
-              <div class="cur_forecast">
-                <div id="high_temp"></div>
-                <img src="" alt="" id="temp_icon" />
-                <p id="desc_weather"></p>
-                <div id="low_temp"></div>
-              </div>
-              <div id="message_forecast"></div>
-              <input type="text" hidden id="packing_items_list" />
-              <input type="text" hidden id="notes_list" />
-              <input type="text" hidden id="flight_list" />
-
-              <!-- Trigger/Open The Modal -->
-              <div class="trip_options">
-                <button id="flight_btn" class="button_med">
-                  Flight details
-                </button>
-                <button id="pack_list_btn" class="button_med"></button>
-                <button id="note_btn" class="button_med"></button>
-                <button id="download_btn" class="button_med"></button>
-              </div>
-
-              <button id="save-btn">Save trip</button>
-              <button id="cancel-btn">Cancel</button>
-            </section>
-          </div>
+          <div id="currentTripWrapper" class="panel"></div>
         </div>
         <div class="main-image"></div>
 
@@ -115,5 +87,14 @@
         ><span>&copy Copyright Vitaliy Vlasyuk, 2021</span>
       </div>
     </footer>
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
   </body>
 </html>

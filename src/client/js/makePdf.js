@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { jsPDF } from 'jspdf';
-import { trips } from './localStorage';
+import { state } from './userData';
 import { daysUntil, dateToString } from './date';
 
 const downloadTrip = (e) => {
   const id = e.target.getAttribute('data-id');
-  const { allData, flights, packingList, notes } = trips.filter(
+  const { allData, flights, packingList, notes } = state.savedTrips.filter(
     (trip) => trip.id === id
   )[0];
 

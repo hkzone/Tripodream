@@ -1,3 +1,6 @@
+// ********************************************************************************************** //
+// ********************* function that returns flight data in simple format ********************* //
+// ********************************************************************************************** //s
 const getFlightsData = (data) => ({
   airlineName: data.airlineName,
   departureAirport: data.departureAirport,

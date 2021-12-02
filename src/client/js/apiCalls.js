@@ -1,51 +1,102 @@
-// Async GET
+// ********************************************************************************************** //
+// ************************ Fetch data from Api server and handle errors ************************ //
+// ********************************************************************************************** //
 const retrieveData = async (url = '') => {
   const request = await fetch(url);
   try {
-    // Transform into JSON
-    const allData = await request.json();
-    return allData;
+    return await request.json();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log('error', error);
-    // appropriately handle the error
+    // TODO:appropriately handle the error
   }
 };
 
-//Fetch location coordinates
-const fetchLocationCoordinates = async (urlApi, apiKey, city) => {
-  const allData = await retrieveData(
-    `${urlApi}${city}&maxRows=1&username=${apiKey}`
-  );
-
-  const data = {
-    latitude: allData.geonames[0].lat,
-    longitude: allData.geonames[0].lng,
-    country: allData.geonames[0].countryName,
-    city: allData.geonames[0].toponymName,
+// ********************************************************************************************** //
+// ********************************* Fetch location coordinates ********************************* //
+// ********************************************************************************************** //
+const fetchLocationCoordinates = async (city) => {
+  const { data } = await retrieveData(`/api/coordinates/${city}`);
+  const geoData = {
+    latitude: data.geonames[0].lat,
+    longitude: data.geonames[0].lng,
+    country: data.geonames[0].countryName,
+    city: data.geonames[0].toponymName,
   };
+  return geoData;
+};
+
+// ********************************************************************************************** //
+// ************************************* Fetch weather data ************************************* //
+// ********************************************************************************************** //
+const fetchWeather = async (lat, lon) => {
+  const { data } = await retrieveData(`/api/weather/${lat}&${lon}`);
   return data;
 };
 
-//Fetch weather data
-const fetchWeather = async (urlApi, apiKey, lat, lon) => {
-  const data = await retrieveData(
-    `${urlApi}&lat=${lat}&lon=${lon}&key=${apiKey}`
+// ********************************************************************************************** //
+// ******************************* Fetch random image of location ******************************* //
+// ********************************************************************************************** //
+const fetchLocationImages = async (city) => {
+  const { data } = await retrieveData(
+    `/api/images/${encodeURIComponent(city)}`
   );
-  return data;
+  //maximum number of images to choose from
+  const maxImages =
+    parseInt(data.totalHits, 10) < 20 ? parseInt(data.totalHits, 10) : 20;
+  if (parseInt(data.totalHits, 10) > 0) {
+    const randomImage = data.hits[Math.floor(Math.random() * maxImages)];
+    return {
+      src: randomImage.webformatURL,
+      tags: randomImage.tags,
+    };
+  }
+  //if no images available return null
+  return null;
 };
 
+// ********************************************************************************************** //
+// **************************** Fetch name of airline from IATA code **************************** //
+// ********************************************************************************************** //
 const getAirlineData = async (airline) => {
-  const data = await retrieveData(`/airline/${airline}`);
+  const data = await retrieveData(`/api/airline/${airline}`);
   return data.data[0].businessName;
 };
 
+// ********************************************************************************************** //
+// *************************** Fetch name of airport from airport code ************************** //
+// ********************************************************************************************** //
 const getAirportName = async (airport) => {
-  const data = await retrieveData(`/airport2/${airport}`);
-  return data.data.airport.name;
+  const data = await retrieveData(`/api/airport2/${airport}`);
+  return data.data.name;
 };
 
-// Async POST
+// ********************************************************************************************** //
+// ************************************ Fetch flight schedule *********************************** //
+// ********************************************************************************************** //
+const fetchFlightSchedule = async (code, flight, date) => {
+  const id = new Date().getTime().toString();
+  const data = await retrieveData(`/api/schedule/${code}&${flight}&${date}`);
+  if (data.status === 'success') {
+    data.airlineName = await getAirlineData(
+      data.data[0].flightDesignator.carrierCode
+    );
+    data.departureAirport = await getAirportName(
+      data.data[0].flightPoints[0].iataCode
+    );
+    data.arrivalAirport = await getAirportName(
+      data.data[0].flightPoints[1].iataCode
+    );
+    data.id = id;
+    return data;
+  }
+  return null;
+};
+
+// ********************************************************************************************** //
+// ***************************************** Async POST ***************************************** //
+// ********************************************************************************************** //
+// TODO: Add meaningful functionality.
 const postData = async (url = '', data = {}) => {
   const response = await fetch(url, {
     method: 'POST',
@@ -65,24 +116,6 @@ const postData = async (url = '', data = {}) => {
   }
 };
 
-//Fetch coordinates for City
-const fetchLocationImages = async (urlApi, apiKey, city) => {
-  const data = await retrieveData(
-    `${urlApi}key=${apiKey}&q=${encodeURIComponent(city)}`
-  );
-  const maxImages =
-    parseInt(data.totalHits, 10) < 20 ? parseInt(data.totalHits, 10) : 20;
-
-  if (parseInt(data.totalHits, 10) > 0) {
-    const randomImage = data.hits[Math.floor(Math.random() * maxImages)];
-    return {
-      src: randomImage.webformatURL,
-      tags: randomImage.tags,
-    };
-  }
-  return null;
-};
-
 export {
   retrieveData,
   getAirportName,
@@ -91,4 +124,5 @@ export {
   fetchWeather,
   postData,
   fetchLocationImages,
+  fetchFlightSchedule,
 };
