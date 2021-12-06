@@ -4,6 +4,7 @@ import 'litepicker-polyfills-ie11';
 import { fetchLocationCoordinates, fetchWeather, postData } from './apiCalls';
 import updateUI from './updateUI';
 import { stateAddToCurrent } from './userData';
+import { showAlert } from './alerts';
 
 const picker = new Litepicker({
   element: document.getElementById('datepicker'),
@@ -18,29 +19,16 @@ const picker = new Litepicker({
 });
 
 // ********************************************************************************************** //
-// ************************* function to display error messages in form ************************* //
-// ********************************************************************************************** //
-const showErrorMessage = (msg) => {
-  const msgField = document.querySelector('#message');
-  msgField.textContent = msg;
-  msgField.classList.toggle('error');
-  setTimeout(() => {
-    msgField.textContent = '';
-    msgField.classList.toggle('error');
-  }, 3000);
-};
-
-// ********************************************************************************************** //
 // ********************* Validate input: check if city and dates are entered ******************** //
 // ********************************************************************************************** //
 const validateFormInput = () => {
   const city = document.querySelector('#city');
   if (city.value.length === 0) {
-    showErrorMessage(`Please input a city name`);
+    showAlert('error', 'Please input a city name', 5);
     return false;
   }
   if (!picker.getStartDate() || !picker.getEndDate()) {
-    showErrorMessage(`Please enter dates`);
+    showAlert('error', 'Please enter date', 5);
     return false;
   }
   return true;
@@ -79,9 +67,9 @@ const handleSubmit = async (event) => {
       city: location.city,
       country: location.country,
     });
-    updateUI();
+    await updateUI();
   } catch (err) {
-    showErrorMessage(err);
+    showAlert('error', err);
   }
   document.getElementById('myModalSpinner').style.display = 'none';
 };

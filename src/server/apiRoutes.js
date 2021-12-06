@@ -9,7 +9,7 @@ router.use('/coordinates/:city', apiController.getLocationCoordinates);
 router.use('/weather/:lat&:lon', apiController.getWeather);
 router.use('/images/:city', apiController.getImages);
 router.use('/airline/:airlineCode', apiController.getAirlines);
-router.use('/airport2/:Airport', apiController.getAirportName3);
+router.use('/airport/:Airport', apiController.getAirportName);
 router.use(
   '/schedule/:carrierCode&:flightNumber&:scheduledDepartureDate',
   apiController.getScheduleFlights

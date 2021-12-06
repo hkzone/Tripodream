@@ -3,6 +3,7 @@ import { fetchFlightSchedule } from './apiCalls';
 import listItem from './Components/listItem';
 import { state, stateUpdateTrip, updateLocalStorage } from './userData';
 import addFlightData from './Components/flightData';
+import { showAlert } from './alerts';
 
 // ********************************************************************************************** //
 // ************************ function to check if any input field is empty *********************** //
@@ -31,17 +32,23 @@ const createLi = (data, customClass = 'list_item') => {
 // ************************************ Extended flight data ************************************ //
 // ********************************************************************************************** //
 const addExtendedFlightData = async () => {
-  const userInput = [...document.querySelectorAll('.userinput')].map(
-    (el) => el.value
-  );
-  document.getElementById('myModalSpinner').style.display = 'grid';
-  const data = await fetchFlightSchedule(
-    userInput[0],
-    userInput[1],
-    userInput[2]
-  );
+  try {
+    const userInput = [...document.querySelectorAll('.userinput')].map(
+      (el) => el.value
+    );
+    document.getElementById('myModalSpinner').style.display = 'grid';
+
+    const data = await fetchFlightSchedule(
+      userInput[0],
+      userInput[1],
+      userInput[2]
+    );
+
+    if (data) createLi(data, 'flight_item');
+  } catch (err) {
+    showAlert('error', err);
+  }
   document.getElementById('myModalSpinner').style.display = 'none';
-  if (data) createLi(data, 'flight_item');
 };
 
 // ********************************************************************************************** //
@@ -142,11 +149,11 @@ const createEntry = (type) => {
 
   // ******************** Add event listeners to add items on "+" button press ******************** //
   const addButton = document.getElementById('enter');
-  addButton.addEventListener('click', () => {
+  addButton.addEventListener('click', async () => {
     const allData = [];
     if (validateInputsLength() > 0) {
       if (type.parentName === 'flights') {
-        addExtendedFlightData();
+        await addExtendedFlightData();
       } // eslint-disable-next-line no-restricted-syntax
       else {
         // eslint-disable-next-line no-restricted-syntax

@@ -50,37 +50,32 @@ const saveNewTrip = (event) => {
 // ******************************** Update UI to display new trip ******************************* //
 // ********************************************************************************************** //
 const updateUI = async () => {
-  try {
-    // *************************** get current search data from api server ************************** //
-    const request = await fetch('/api/all');
-    const allData = await request.json();
+  // *************************** get current search data from api server ************************** //
+  const request = await fetch('/api/all');
+  const allData = await request.json();
 
-    // ******************************* get image for searched location ****************************** //
-    let image = await fetchLocationImages(`${allData.city}+${allData.country}`);
-    if (image === null) {
-      image = await fetchLocationImages(allData.country);
-    }
-
-    // ***************************** display information on current trip **************************** //
-    stateAddToCurrent({ allData, image });
-    const mainWrapper = document.getElementById('currentTripWrapper');
-    mainWrapper.innerHTML = cardComponent(state.currentData, 'tripDetails');
-    mainWrapper.style.backgroundImage = `url('${image.src}')`;
-    mainWrapper.setAttribute('data-id', `${state.currentData.id}-wrapper`);
-    mainWrapper.style.visibility = 'visible';
-
-    // ************************** Event listener for clicks on current trip ************************** //
-    mainWrapper.addEventListener('click', (event) => {
-      const { classList } = event.target;
-      if (classList.contains('update_data')) updateTrip(event, 'current');
-      else if (classList.contains('save-btn')) saveNewTrip(event);
-      else if (classList.contains('cancel-btn')) mainWrapper.innerHTML = '';
-      // else if (classList.contains('download_data')) downloadTrip(event);
-    });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log('error', error);
+  // ******************************* get image for searched location ****************************** //
+  let image = await fetchLocationImages(`${allData.city}+${allData.country}`);
+  if (image === null) {
+    image = await fetchLocationImages(allData.country);
   }
+
+  // ***************************** display information on current trip **************************** //
+  stateAddToCurrent({ allData, image });
+  const mainWrapper = document.getElementById('currentTripWrapper');
+  mainWrapper.innerHTML = cardComponent(state.currentData, 'tripDetails');
+  mainWrapper.style.backgroundImage = `url('${image.src}')`;
+  mainWrapper.setAttribute('data-id', `${state.currentData.id}-wrapper`);
+  mainWrapper.style.visibility = 'visible';
+
+  // ************************** Event listener for clicks on current trip ************************** //
+  mainWrapper.addEventListener('click', (event) => {
+    const { classList } = event.target;
+    if (classList.contains('update_data')) updateTrip(event, 'current');
+    else if (classList.contains('save-btn')) saveNewTrip(event);
+    else if (classList.contains('cancel-btn')) mainWrapper.innerHTML = '';
+    // else if (classList.contains('download_data')) downloadTrip(event);
+  });
 };
 
 export default updateUI;
