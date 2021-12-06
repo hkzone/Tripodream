@@ -13,12 +13,12 @@ const nextFlight = ({ flights }) => {
       const iataCodeArr = data.data[0].flightPoints[1].iataCode;
       const arrTime = data.data[0].flightPoints[1].arrival.timings[0].value;
       return `
-       <div>Flight info:</div>
+        <div>Flight info:</div>
         <div class='flight_info'>
-            <div>${iataCodeDep} ${dateToString(depTime, false, true)}</div>
-            <div>${iataCodeArr} ${dateToString(arrTime, false, true)}</div>
+          <div>${iataCodeDep} ${dateToString(depTime, false, true)}</div>
+          <div>${iataCodeArr} ${dateToString(arrTime, false, true)}</div>
         </div>
-       `;
+        `;
     }
   }
   return '';

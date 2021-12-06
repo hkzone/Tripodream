@@ -1,0 +1,187 @@
+#pdf-modal {
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+
+  h5 {
+    margin-bottom: 1rem;
+  }
+
+  .pdf-buttons {
+    margin: 0.5rem 0 2rem;
+  }
+}
+
+#pdf {
+  justify-content: flex-start;
+
+  .list {
+    border: none;
+  }
+
+  .pdf-content {
+    zoom: 50%;
+    overflow: scroll;
+    padding: 0 10px;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 760px;
+    background-color: #fff;
+    border-radius: 0 !important;
+
+    &.card {
+      width: 500px;
+    }
+
+    li {
+      list-style: none;
+      margin: 0.3rem 0;
+    }
+
+    .weather {
+      margin-bottom: 2rem;
+      ul {
+        margin: 0 2rem 0 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+        justify-items: stretch;
+
+        li {
+          display: grid;
+          grid-template-columns: minmax(50px, 1fr) minmax(180px, 1fr) minmax(
+              50px,
+              1fr
+            );
+
+          margin: 0 2rem 0 0;
+        }
+
+        .weather-desc {
+          margin: 0 1.5rem;
+          color: $clr-primary-5;
+        }
+      }
+    }
+
+    .flight_information {
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .flight_dep,
+    .flight_arr {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .button_small {
+      display: none;
+    }
+
+    .flight_item {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .airline {
+        .name {
+          font-size: 1.2rem;
+          line-height: 1.2rem;
+          height: 2.4rem;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 0.5rem;
+          span {
+            display: inline-block;
+            align-self: flex-end;
+          }
+        }
+
+        .code {
+          font-size: $small-font-size;
+          color: $color-grey;
+        }
+      }
+
+      .flight-container {
+        display: flex;
+        justify-content: center;
+
+        .flight {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          .date {
+            font-size: calc($small-font-size * 0.9);
+            color: clr-grey-dark;
+          }
+
+          .city {
+            font-size: calc($normal-font-size * 1.2);
+            margin: 0.1rem 0 0.5rem;
+          }
+
+          .time {
+            color: $color-grey;
+            font-size: $small-font-size;
+          }
+        }
+      }
+
+      .duration {
+        display: inline-flex;
+        justify-content: space-between;
+        div {
+          border-bottom: 1px solid #aaa;
+          margin-bottom: 18px;
+          width: 100px;
+          color: $clr-primary-5;
+        }
+
+        span {
+          margin-top: 12px;
+          img {
+            height: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .list-pdf {
+    margin: 1rem 0;
+    width: 100%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 2rem;
+      display: inline;
+    }
+
+    &.packing ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+
+      li {
+        list-style: outside;
+        text-align: left;
+      }
+    }
+
+    &.notes li {
+      margin: 0.5rem 1rem;
+      text-align: justify;
+    }
+  }
+}

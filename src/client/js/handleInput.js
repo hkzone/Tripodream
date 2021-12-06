@@ -130,9 +130,11 @@ const createEntry = (type) => {
       });
   } else if (type.type === 'saved') {
     const trip = state.savedTrips.filter((el) => el.id === type.id);
+
     const data = JSON.parse(
       trip[0][`${savedObjectValues}`][`${savedObjectValues}`] || '[]'
     );
+    console.log(data);
     if (data) {
       data.forEach((el) => createLi(JSON.parse(el.data).data, option));
     }

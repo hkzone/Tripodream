@@ -7,13 +7,19 @@ const daysUntil = (date) =>
 // ********************************************************************************************** //
 // **************** function that converts date to string with different options **************** //
 // ********************************************************************************************** //
-const dateToString = (date, showYear = false, showTime = false) => {
+const dateToString = (
+  date,
+  showYear = false,
+  showTime = false,
+  showWeekDay = false
+) => {
   let options = {
     month: 'short',
     day: 'numeric',
   };
   if (showYear) options = { ...options, year: 'numeric' };
   if (showTime) options = { ...options, hour: 'numeric', minute: 'numeric' };
+  if (showWeekDay) options = { ...options, weekday: 'short' };
 
   return new Date(date).toLocaleDateString('en-GB', options);
 };
@@ -22,13 +28,16 @@ const dateToString = (date, showYear = false, showTime = false) => {
 // **************** function that returns hh:mm difference between 2 time objects *************** //
 // ********************************************************************************************** //
 const timeDiff = (date1, date2) => {
-  const start = new Date(date1).getTime();
-  const end = new Date(date2).getTime();
+  const start = new Date(date1);
+  const end = new Date(date2);
 
-  const dateDiff = end - start;
+  let dateDiff = end - start;
+  const hh = Math.floor(dateDiff / 1000 / 60 / 60);
+  dateDiff -= hh * 1000 * 60 * 60;
+  const mm = Math.floor(dateDiff / 1000 / 60);
 
   return `
-    ${dateDiff.getHours()}H,${dateDiff.getMinutes()}M`;
+    ${hh}h, ${mm}min`;
 };
 
 // ********************************************************************************************** //

@@ -68,7 +68,7 @@ const getAirlineData = async (airline) => {
 // ********************************************************************************************** //
 const getAirportName = async (airport) => {
   const data = await retrieveData(`/api/airport2/${airport}`);
-  return data.data.name;
+  return data.data;
 };
 
 // ********************************************************************************************** //
@@ -81,12 +81,16 @@ const fetchFlightSchedule = async (code, flight, date) => {
     data.airlineName = await getAirlineData(
       data.data[0].flightDesignator.carrierCode
     );
-    data.departureAirport = await getAirportName(
+    const departureLocation = await getAirportName(
       data.data[0].flightPoints[0].iataCode
     );
-    data.arrivalAirport = await getAirportName(
+    const arrivalLocation = await getAirportName(
       data.data[0].flightPoints[1].iataCode
     );
+    data.departureAirport = departureLocation.name;
+    data.arrivalAirport = arrivalLocation.name;
+    data.departureCity = departureLocation.city;
+    data.arrivalCity = arrivalLocation.city;
     data.id = id;
     return data;
   }

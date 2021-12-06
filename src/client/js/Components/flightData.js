@@ -11,12 +11,12 @@ const addFlightData = (id, fData) => {
   const iataCodeArr = data.data[0].flightPoints[1].iataCode;
   const arrTime = data.data[0].flightPoints[1].arrival.timings[0].value;
   flightContainer.innerHTML = `
-       <div>Flight info:</div>
-        <div class='flight_info'>
-            <div>${iataCodeDep} ${dateToString(depTime, false, true)}</div>
-            <div>${iataCodeArr} ${dateToString(arrTime, false, true)}</div>
-        </div>
-       `;
+<div>Flight info:</div>
+<div class='flight_info'>
+  <div>${iataCodeDep} ${dateToString(depTime, false, true)}</div>
+  <div>${iataCodeArr} ${dateToString(arrTime, false, true)}</div>
+</div>
+`;
 };
 
 export default addFlightData;

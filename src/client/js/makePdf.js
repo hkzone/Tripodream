@@ -1,51 +1,39 @@
-/* eslint-disable no-unused-vars */
 import { jsPDF } from 'jspdf';
-import { state } from './userData';
-import { daysUntil, dateToString } from './date';
+import pdfDocument from './Components/pdfDocument';
 
 const downloadTrip = (e) => {
   const id = e.target.getAttribute('data-id');
-  const { allData, flights, packingList, notes } = state.savedTrips.filter(
-    (trip) => trip.id === id
-  )[0];
 
-  let daysAway = daysUntil(allData.startDate);
-  let forecastOrCurrent;
-  if (daysAway < 16 && daysAway >= 0) {
-    forecastOrCurrent = 'forecasted';
-  } else {
-    daysAway = 0;
-    forecastOrCurrent = 'current';
-  }
+  // ********************** Create and display printable version of the trip ********************** //
+  const pdfHTML = document.createElement('div');
+  pdfHTML.innerHTML = pdfDocument(id);
+  document.body.appendChild(pdfHTML);
 
-  const printHeader = `
-  <div >
-      <span class='big_slash'>/</span>${allData.city}, ${allData.country}
-    </div> 
-    <div> Departing: ${dateToString(allData.startDate, true)}</div>
-    <hr>
-    <div>This trip is ${daysAway} day(s) away!</div>
-     <div>The ${forecastOrCurrent}  weather is 
-      ${allData.weatherData.data[daysAway].weather.description.toLowerCase()}
-    </div>
-    `;
-  const printWeather = allData.weatherData.data.map(
-    (el) =>
-      `date:${el.valid_date} high temp:${el.high_temp} low temp:${el.low_temp} Forecast: ${el.weather.description}`
-  );
-  // printHeader.append(printWeather);
+  const pdfModal = document.querySelector('#pdf-modal');
+  pdfModal.style.display = 'flex';
 
-  // eslint-disable-next-line new-cap
-  const pdf = new jsPDF('p', 'pt', [795, 1245]);
-  pdf.text = ('printHeader', 10, 10);
-  pdf.save('test.pdf');
-  // pdf.html(document.getElementsByClassName('card')[0], {
-  //   callback: function (pdf) {
-  //     pdf.save('test.pdf');
-  //   },
-  //   x: 10,
-  //   y: 10,
-  // });
+  // ***************************** event listener on Save button click **************************** //
+  const printButton = document.querySelector('#pdf-modal .print-pdf');
+  printButton.addEventListener('click', () => {
+    // eslint-disable-next-line new-cap
+    const pdf = new jsPDF('p', 'pt', [795, 1245]);
+    const pdfContent = document.querySelector('.pdf-content');
+    pdfContent.style.zoom = 'normal';
+    pdfContent.style.border = 'none';
+    pdf.html(document.querySelector('#pdf'), {
+      callback: () => {
+        pdfHTML.remove();
+        pdf.save('test.pdf');
+      },
+      x: 10,
+      y: 10,
+    });
+  });
+
+  // **************************** event listener on Close button click **************************** //
+  document
+    .querySelector('#pdf-modal .close-pdf')
+    .addEventListener('click', () => pdfModal.remove());
 };
 
 export default downloadTrip;

@@ -20,15 +20,15 @@ const slider = ({ weatherData }) => {
       const date = dateToString(el.ts * 1000);
 
       return `
-        <div class='${position} weather-item' data-key=${elIndex}>
-          <span class='weather-date'>${date}</span>
-          <img src='./images/${icon}.svg' alt="${icon}" class='slider_img' /img>
-          <p class='weather-description'>${el.weather.description}</p>
-          <div>${Math.round(el.high_temp)}°/${Math.round(el.low_temp)}°<br />${
+      <div class='${position} weather-item' data-key=${elIndex}>
+        <span class='weather-date'>${date}</span>
+        <img src='./images/${icon}.svg' alt="${icon}" class='slider_img' /img>
+        <p class='weather-description'>${el.weather.description}</p>
+        <div>${Math.round(el.high_temp)}°/${Math.round(el.low_temp)}°<br />${
         el.rh
       }%</div>
-        </div>  
-        `;
+      </div>
+      `;
     })
     .join('');
 };
