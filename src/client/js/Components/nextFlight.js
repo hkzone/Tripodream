@@ -3,6 +3,7 @@ import { dateToString } from '../date';
 const nextFlight = ({ flights }) => {
   if (
     flights &&
+    flights !== '[]' &&
     // eslint-disable-next-line no-prototype-builtins
     JSON.parse(flights)[0].hasOwnProperty('data')
   ) {

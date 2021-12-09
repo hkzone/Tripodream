@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { showAlert } from './alerts';
 
 // ********************************************************************************************** //
 // ************************ Fetch data from Api server and handle errors ************************ //
@@ -37,8 +36,23 @@ const fetchLocationCoordinates = async (city) => {
 // ********************************************************************************************** //
 // ************************************* Fetch weather data ************************************* //
 // ********************************************************************************************** //
-const fetchWeather = async (lat, lon) => {
-  const data = await retrieveData(`/api/weather/${lat}&${lon}`);
+const fetchWeather = async (lat, lon, start, end) => {
+  const dayInMs = 24 * 60 * 60;
+
+  let endtime;
+
+  //maximum fetch forecast for 14 days
+  if (end - start > 13 * dayInMs) {
+    endtime = start + 13 * dayInMs;
+  }
+  //minimum fetch forecast for 5 days
+  else if (end - start < 4 * dayInMs) {
+    endtime = start + 4 * dayInMs;
+  } else endtime = end;
+
+  const data = await retrieveData(
+    `/api/weather/${lat}&${lon}&${start}&${endtime}`
+  );
 
   if (data.status !== 'success') throw new Error(data.data);
 

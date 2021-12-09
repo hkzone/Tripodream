@@ -58,8 +58,11 @@ const handleSubmit = async (event) => {
     const location = await fetchLocationCoordinates(city);
     const weatherData = await fetchWeather(
       location.latitude,
-      location.longitude
+      location.longitude,
+      startDate / 1000,
+      endDate / 1000
     );
+    console.log(weatherData);
     postData('/api/all', {
       weatherData,
       startDate,
@@ -69,6 +72,7 @@ const handleSubmit = async (event) => {
     });
     await updateUI();
   } catch (err) {
+    console.log(err);
     showAlert('error', err);
   }
   document.getElementById('myModalSpinner').style.display = 'none';

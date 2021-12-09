@@ -4,8 +4,18 @@ import nextFlight from './nextFlight';
 import oneDayWeather from './_oneDayWeather';
 
 const card = (data, type = 'section') => {
-  const { allData, image, id, flights = {} } = data;
-  const sliderHtml = slider(allData);
+  const {
+    allData,
+    image,
+    id,
+    notes = { notes: '[]' },
+    packingList = { packingList: '[]' },
+    flights = { flights: '[]' },
+  } = data;
+
+  const flightsQty = JSON.parse(flights.flights).length;
+  const plistQty = JSON.parse(packingList.packingList).length;
+  const notesQty = JSON.parse(notes.notes).length;
 
   const flightContainer = nextFlight(flights);
   return `
@@ -14,6 +24,7 @@ const card = (data, type = 'section') => {
       type === 'section'
         ? `<div class="card_image">
       <img src=${image.src} alt="${image.tags}" /img>
+      <span class="card-image-overlay style="display: none">Expired</span>
     </div>`
         : ''
     }
@@ -37,7 +48,7 @@ const card = (data, type = 'section') => {
         type === 'section'
           ? `<div class='section-center'>
         <div class='weather-slider'>
-          ${sliderHtml}
+          ${slider(allData)}
         </div>
         <button type="button" class='prev'><</button>
         <button type="button" class='next'>></button>
@@ -50,20 +61,29 @@ const card = (data, type = 'section') => {
         type !== 'pdf'
           ? `
       <div class="trip_options">
-        <button data-id=${id} data-type='flights' class='update_data flight_btn'>Flights</button>
+        <button data-id=${id} data-type='flights' class='update_data flight_btn'>
+          <object data="./images/plane.svg" type="image/svg+xml"></object>
+           <span>${flightsQty > 0 ? ` (${flightsQty})` : ''} </span></button>
         <button data-id=${id} data-type='p_list' class='update_data pack_list_btn'>
-          item(s) in packing list</button>
-        <button data-id=${id} data-type='notes' class='update_data note_btn'>Notes</button>
-        <button data-id=${id} data-type='download' class='download_data'>Download</button>
-      </div>
+         <object data="./images/checkbox.svg" type="image/svg+xml"></object>
+         <span>${plistQty > 0 ? ` (${plistQty})` : ''} </span> </button>
+        <button data-id=${id} data-type='notes' class='update_data note_btn'>
+            <object data="./images/notes.svg" type="image/svg+xml"></object>
+             <span>${notesQty > 0 ? ` (${notesQty})` : ''} </span></button>
+        <button data-id=${id} data-type='download' class='download_data'>
+        <object data="./images/pdf.svg" type="image/svg+xml"></object></button>
+     
       ${
         type === 'section'
           ? `
-      <div class="card_footer">
-        <button data-id=${id} class='delete_data'>Delete trip</button>
-      </div>`
-          : `<button data-id=${id} class="save-btn">Save trip</button>
-      <button data-id=${id} class="cancel-btn">Cancel</button>`
+      
+              <button data-id=${id} class='delete_data'>
+              <object data="./images/delete.svg" type="image/svg+xml"></object>
+              </button>
+              </div>`
+          : ` </div>
+              <button data-id=${id} class="save-btn">Save trip</button>
+              <button data-id=${id} class="cancel-btn">Cancel</button>`
       }
     </div>`
           : ''

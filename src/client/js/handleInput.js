@@ -39,7 +39,7 @@ const addExtendedFlightData = async () => {
     document.getElementById('myModalSpinner').style.display = 'grid';
 
     const data = await fetchFlightSchedule(
-      userInput[0],
+      userInput[0].toUpperCase(),
       userInput[1],
       userInput[2]
     );
@@ -71,9 +71,9 @@ const saveEntries = (type) => {
     if (listValues.length > 0) {
       element.value = JSON.stringify(listValues);
       //update q-ty TODO:make it global
-      element.innerText = `${listValues.length} item(s) in ${type.parentName}`;
+      element.innerText = `(${listValues.length})`;
     } else {
-      element.innerText = `Add ${type.parentName}`;
+      element.innerText = ``;
     }
   }
   // ************************ save modified data for previously saved items *********************** //
@@ -85,12 +85,12 @@ const saveEntries = (type) => {
       //update q-ty TODO:make it global
       document.querySelectorAll(
         `[data-id='${type.id}'][data-type='${type.dataType}']`
-      )[0].innerText = `${listValues.length} item(s) in ${type.parentName}`;
+      )[0].innerText = `(${listValues.length})`;
     } else {
       stateUpdateTrip(type, null);
       document.querySelectorAll(
         `[data-id='${type.id}'][data-type='${type.dataType}']`
-      )[0].innerText = `Add ${type.parentName}`;
+      )[0].innerText = ``;
     }
     updateLocalStorage();
   }

@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>Weather Journal</title>
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
-    ></script>
   </head>
   <body>
     <header id="header"></header>
@@ -31,16 +27,6 @@
                 />
                 <label class="input_label" for="datepicker">Dates</label>
               </div>
-
-              <!-- <div class="input">
-              <input type="date" class="input_field" id="start-date" required />
-              <label class="input_label" for="start-date">Start Date</label>
-            </div>
-            <div class="input">
-              <input type="date" class="input_field" id="end-date" required />
-              <label class="input_label" for="end-date">End Date</label>
-            </div> -->
-              <p id="message"></p>
               <div class="form-btn">
                 <button
                   id="generate"
@@ -72,7 +58,9 @@
 
       <div class="side">
         <div class="side_container">
-          <div id="entryHolder"></div>
+          <div id="entryHolder">
+            <div id="expired-trips"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -80,12 +68,8 @@
     <!-- Footer -->
     <footer id="footer">
       <div class="socials">
-        <i class="fab fa-twitter socials"></i
-        ><i class="fab fa-facebook-f socials"></i
-        ><i class="fab fa-instagram socials"></i
-        ><i class="fab fa-linkedin socials"></i
-        ><i class="fas fa-envelope socials"></i
-        ><span>&copy Copyright Vitaliy Vlasyuk, 2021</span>
+        <span>&copy Copyright Vitaliy Vlasyuk, 2021</span>
+        <i class="fab fa-github socials"></i>
       </div>
     </footer>
     <script>

@@ -5,7 +5,7 @@ const html = {
       <label class="input_label" for="airline">Airline code</label>
     </div>
     <div class="input">
-      <input id="flight" class="userinput input_field" type="text" placeholder="098" required>
+      <input id="flight" class="userinput input_field" type="number" placeholder="098"  required>
       <label class="input_label" for="flight">Flight#</label>
     </div>
     <div class="input">

@@ -25,15 +25,15 @@ const pdfDocument = (id) => {
       <div class="weather">
         <h5>Weather forecast</h5>
         <ul>
-          ${data.allData.weatherData.data
+          ${data.allData.weatherData.days
             .map(
               (el) =>
                 `<li><span class="date-weather">${dateToString(
-                  el.valid_date
+                  el.datetimeEpoch * 1000
                 )}</span><span class="weather-desc">${
-                  el.weather.description
-                }</span><span class="weather-temp">${el.high_temp}°/${
-                  el.low_temp
+                  el.conditions
+                }</span><span class="weather-temp">${el.tempmax}°/${
+                  el.tempmin
                 }°</span></li> `
             )
             .join('')}

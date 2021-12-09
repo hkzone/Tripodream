@@ -7,8 +7,12 @@ const state = {
 };
 
 // ************************************ update local storage ************************************ //
-const updateLocalStorage = () =>
-  localStorage.setItem('savedTrips', JSON.stringify(state.savedTrips));
+const updateLocalStorage = () => {
+  const arr = state.savedTrips;
+  //sort by date
+  arr.sort((a, b) => b.startDate - a.startDate);
+  localStorage.setItem('savedTrips', JSON.stringify(arr));
+};
 
 // ******************************** read trips from localStorage ******************************** //
 const localStorageTrips = () =>

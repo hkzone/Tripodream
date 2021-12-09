@@ -10,8 +10,12 @@
   width: 100%;
   opacity: 0.95;
   margin-bottom: 2rem;
-  padding: 1rem 1rem 0.4rem 1rem;
-  display: flex;
+  padding: 1.1rem 0.1rem 0.4rem 0.4rem;
+  display: grid;
+  grid-template-columns: minmax(min-content, 40%) minmax(min-content, 1fr) minmax(
+      min-content,
+      min-content
+    );
 }
 
 .input {
@@ -32,7 +36,7 @@
 .input_label {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 6px;
   padding: 0.2rem 0.2rem;
   pointer-events: none;
   transition: 0.5s;
@@ -46,8 +50,8 @@ input::placeholder {
 
 .input_field:focus ~ label,
 .input_field:valid ~ label {
-  top: -1rem;
-  left: 0;
+  top: -0.8rem;
+  left: 6px;
   color: var(clr-grey-dark);
   font-size: $small-font-size;
 }

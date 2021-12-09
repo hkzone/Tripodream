@@ -46,6 +46,13 @@ $background-color-gradient: radial-gradient(
   rgba(250, 250, 250, 1) 57%,
   rgba(229, 239, 246, 1) 100%
 );
+$background-color-gradient-secondary: radial-gradient(
+  circle,
+  rgba(238, 238, 238, 1) 57%,
+  rgba(229, 239, 246, 1) 100%
+);
+
+$footer-height: 1.6rem;
 
 /*========== Font and typography ==========*/
 $body-font: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
@@ -153,72 +160,12 @@ h5 {
   margin-right: 1rem;
   font-weight: 700;
 }
-/*=============== APP ===============*/
-#app {
-  display: flex;
-  background: $background-color-gradient;
-  border-radius: $app-radius;
+
+object {
+  width: 1.25rem;
+  pointer-events: none;
 }
 
-.main {
-  flex: 1;
-  border-radius: $app-radius;
-
-  width: 100%;
-  background-image: url('./../images/pexels-tomáš-malík-3607084.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.main_wrapper {
-}
-
-.side {
-  flex: 1;
-}
-
-.panel {
-  background: $background-color-gradient;
-  border-radius: $panel-radius;
-  box-shadow: $dark-shadow;
-}
-
-.headline {
-  margin-top: 0.1rem;
-  font-size: $headline-font-size;
-  font-family: $secondary-font;
-
-  color: #3e065f;
-}
-.headline :nth-child(odd) {
-  color: #3f0713;
-}
-
-#footer {
-  font-size: $small-font-size;
-}
-
-@media only screen and (max-width: 768px) {
-  #app {
-    display: block;
-    height: auto;
-    max-height: none;
-    width: 97%;
-    margin: 0 auto;
-    /* border-radius: 0;
-      background: none; */
-  }
-  .main {
-    width: auto;
-    height: auto;
-    max-height: none;
-    /* border-radius: 0; */
-  }
-
-  .side {
-    padding: 0;
-  }
-}
 @media screen and (min-width: 500px) {
   :root {
     $headline-font-size: 3.2rem;
@@ -229,11 +176,5 @@ h5 {
   :root {
     $big-font-size: 1.75rem;
     $normal-font-size: 1rem;
-  }
-}
-
-@media only screen and (min-width: 1350px) {
-  .main {
-    max-width: 35vw;
   }
 }

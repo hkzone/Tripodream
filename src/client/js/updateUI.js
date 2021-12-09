@@ -16,18 +16,19 @@ import generateCard from './generateCard';
 const saveNewTrip = (event) => {
   const id = event.target.getAttribute('data-id');
   const packingList = {
-    packingList: document.querySelectorAll(
-      `[data-id='${id}'][data-type='p_list']`
-    )[0].value,
+    packingList:
+      document.querySelectorAll(`[data-id='${id}'][data-type='p_list']`)[0]
+        .value || '[]',
   };
   const notes = {
-    notes: document.querySelectorAll(`[data-id='${id}'][data-type='notes']`)[0]
-      .value,
+    notes:
+      document.querySelectorAll(`[data-id='${id}'][data-type='notes']`)[0]
+        .value || '[]',
   };
   const flights = {
-    flights: document.querySelectorAll(
-      `[data-id='${id}'][data-type='flights']`
-    )[0].value,
+    flights:
+      document.querySelectorAll(`[data-id='${id}'][data-type='flights']`)[0]
+        .value || '[]',
   };
   // *********************** add to current data in state input by the user *********************** //
   stateAddToCurrent({
