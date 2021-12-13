@@ -62,7 +62,7 @@ const handleSubmit = async (event) => {
       startDate / 1000,
       endDate / 1000
     );
-    console.log(weatherData);
+
     postData('/api/all', {
       weatherData,
       startDate,

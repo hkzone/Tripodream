@@ -8,7 +8,7 @@ const hideAlert = () => {
 //type is 'success' or 'error'
 const showAlert = (type, message, time = 7) => {
   hideAlert();
-  const markup = `<div class="alert alert--${type}">${message}</div>`;
+  const markup = `<div class="alert alert-${type}">${message}</div>`;
   document.querySelector('#header').insertAdjacentHTML('afterend', markup);
   window.setTimeout(hideAlert, time * 1000);
 };

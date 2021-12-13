@@ -1,0 +1,63 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap');
+
+/*========== Colors ==========*/
+
+$title-color: hsl(240, 8%, 15%);
+$text-color: #1e2845;
+$body-color: hsl(240, 100%, 99%);
+$container-color: #fff;
+$color-grey: #5e5e6d;
+$background-color: #fefefe;
+$error-text: #d8000c;
+$error-background-color: #ffbaba;
+$alert-success: rgba(28, 199, 28, 0.9);
+$alert-error: rgba(252, 86, 86, 0.9);
+
+$clr-primary-5: hsl(21, 62%, 45%);
+
+$clr-grey-1: hsl(209, 61%, 16%);
+$clr-grey-5: hsl(210, 22%, 49%);
+$clr-grey-6: hsl(209, 23%, 60%);
+$clr-grey-7: hsl(211, 27%, 70%);
+
+$clr-white: #fff;
+$clr-grey-dark: #171a2b;
+
+//brand Colors
+$clr-brand-primary: #3e065f;
+$clr-brand-secondary: #3f0713;
+
+//button Colors
+$btn-color: #3d3d3d;
+$btn-color-hover: #373737;
+$btn-color-grey: #708090;
+$btn-text-white: #f6f6f6;
+$btn-text-white-tint: #fcfcfc;
+$button-modal: #aaa;
+$button-modal-hover: #171a2b;
+
+$transition: all 0.3s linear;
+$spacing: 0.1rem;
+$radius: 0.25rem;
+$app-radius: 3.75rem;
+$panel-radius: 1rem;
+$light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+$dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+$box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+$alert-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+$background-color-gradient: radial-gradient(
+  circle,
+  rgba(250, 250, 250, 1) 57%,
+  rgba(229, 239, 246, 1) 100%
+);
+
+$footer-height: 1.6rem;
+
+/*========== Font and typography ==========*/
+$body-font: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+$secondary-font: 'Montserrat Alternates', sans-serif;
+$headline-font-size: 2.2rem;
+$big-font-size: 1.5rem;
+$normal-font-size: 0.938rem;
+$small-font-size: 0.85rem;

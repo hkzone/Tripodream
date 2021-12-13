@@ -3,8 +3,9 @@ footer {
   justify-content: center;
   align-items: center;
   text-align: center;
-  // background-color: $background-color-footer;
   padding: 0.2rem 0;
+  min-height: $footer-height;
+  font-size: calc($small-font-size * 0.85);
 
   svg {
     margin: 0 0.2rem;

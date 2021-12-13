@@ -13,6 +13,7 @@ const card = (data, type = 'section') => {
     flights = { flights: '[]' },
   } = data;
 
+  console.log(data, JSON.parse(flights.flights));
   const flightsQty = JSON.parse(flights.flights).length;
   const plistQty = JSON.parse(packingList.packingList).length;
   const notesQty = JSON.parse(notes.notes).length;
@@ -46,7 +47,7 @@ const card = (data, type = 'section') => {
       ${
         // eslint-disable-next-line no-nested-ternary
         type === 'section'
-          ? `<div class='section-center'>
+          ? `<div class='slider'>
         <div class='weather-slider'>
           ${slider(allData)}
         </div>
@@ -61,23 +62,23 @@ const card = (data, type = 'section') => {
         type !== 'pdf'
           ? `
       <div class="trip_options">
-        <button data-id=${id} data-type='flights' class='update_data flight_btn'>
+        <button data-id=${id} data-type='flights' class='update_data flight_btn icon'>
           <object data="./images/plane.svg" type="image/svg+xml"></object>
            <span>${flightsQty > 0 ? ` (${flightsQty})` : ''} </span></button>
-        <button data-id=${id} data-type='p_list' class='update_data pack_list_btn'>
+        <button data-id=${id} data-type='p_list' class='update_data pack_list_btn icon'>
          <object data="./images/checkbox.svg" type="image/svg+xml"></object>
          <span>${plistQty > 0 ? ` (${plistQty})` : ''} </span> </button>
-        <button data-id=${id} data-type='notes' class='update_data note_btn'>
+        <button data-id=${id} data-type='notes' class='update_data note_btn icon'>
             <object data="./images/notes.svg" type="image/svg+xml"></object>
              <span>${notesQty > 0 ? ` (${notesQty})` : ''} </span></button>
-        <button data-id=${id} data-type='download' class='download_data'>
+        <button data-id=${id} data-type='download' class='download_data icon'>
         <object data="./images/pdf.svg" type="image/svg+xml"></object></button>
      
       ${
         type === 'section'
           ? `
       
-              <button data-id=${id} class='delete_data'>
+              <button data-id=${id} class='delete_data icon'>
               <object data="./images/delete.svg" type="image/svg+xml"></object>
               </button>
               </div>`

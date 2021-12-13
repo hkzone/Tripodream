@@ -39,7 +39,9 @@ const pdfDocument = (id) => {
             .join('')}
         </ul>
       </div>
-      <div>
+      ${
+        flightsArr.length
+          ? `<div>
         <h5>Flights</h5>
         <ul>
           ${flightsArr
@@ -50,7 +52,12 @@ const pdfDocument = (id) => {
             .join('')}
 
         </ul>
-      </div>
+      </div>`
+          : ''
+      }
+      ${
+        packingArr.length
+          ? `
       <div class="list-pdf packing">
         <h5>Packing list</h5>
         <ul>
@@ -66,6 +73,12 @@ const pdfDocument = (id) => {
             .join('')}
         </ul>
       </div>
+      `
+          : ''
+      }
+      ${
+        notesArr.length
+          ? `
       <div class="list-pdf notes">
         <h5>Notes</h5>
         <ul>
@@ -81,6 +94,9 @@ const pdfDocument = (id) => {
             .join('')}
         </ul>
       </div>
+      `
+          : ''
+      }
 
     </div>
   </section>

@@ -4,9 +4,8 @@
   text-align: center;
   margin-top: 1rem;
 }
+
 .search_form {
-  /* -webkit-backdrop-filter: blur(1px);
-  backdrop-filter: blur(1px); */
   width: 100%;
   opacity: 0.95;
   margin-bottom: 2rem;
@@ -31,6 +30,14 @@
   margin: 0.8rem 0 0.8rem;
   background: transparent;
   width: 95%;
+
+  &:focus ~ label,
+  &:valid ~ label {
+    top: -0.8rem;
+    left: 6px;
+    color: var(clr-grey-dark);
+    font-size: $small-font-size;
+  }
 }
 
 .input_label {
@@ -42,37 +49,6 @@
   transition: 0.5s;
   color: $title-color;
   font-weight: 500;
-}
-
-input::placeholder {
-  font-size: $small-font-size;
-}
-
-.input_field:focus ~ label,
-.input_field:valid ~ label {
-  top: -0.8rem;
-  left: 6px;
-  color: var(clr-grey-dark);
-  font-size: $small-font-size;
-}
-
-.form-btn {
-  /* display: flex; */
-}
-#generate {
-  /* width: 100%; */
-}
-
-#message {
-  padding: 0 0.5rem;
-  margin: 0.3rem 0;
-}
-
-.error {
-  color: $error-text;
-  background-color: $error-background-color;
-  border-radius: 3px;
-  box-shadow: $light-shadow;
 }
 
 @media screen and (max-width: 500px) {

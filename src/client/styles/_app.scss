@@ -4,53 +4,31 @@
   background: $background-color-gradient;
   border-radius: $app-radius;
   overflow-y: hidden;
-}
 
-.main {
-  flex: 1;
-  border-radius: $app-radius;
+  .main {
+    flex: 1;
+    border-radius: $app-radius;
+    width: 100%;
+    background-image: url('./../images/pexels-tomáš-malík-3607084.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 
-  width: 100%;
-  background-image: url('./../images/pexels-tomáš-malík-3607084.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.side {
-  flex: 1;
-}
-
-.panel {
-  background: $background-color-gradient;
-  border-radius: $panel-radius;
-  box-shadow: $dark-shadow;
+  .side {
+    flex: 1;
+  }
 }
 
 .headline {
   margin-top: 0.4rem;
   font-size: $headline-font-size;
   font-family: $secondary-font;
+  color: $clr-brand-primary;
 
-  color: #3e065f;
-}
-.headline :nth-child(odd) {
-  color: #3f0713;
-}
-
-#footer {
-  font-size: calc($small-font-size * 0.85);
-}
-body {
-  min-height: 100vh;
-  margin: 0;
-
-  display: grid;
-  grid-template-rows: 0px 1fr auto;
-}
-
-footer {
-  min-height: $footer-height;
+  & :nth-child(odd) {
+    color: $clr-brand-secondary;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -60,18 +38,20 @@ footer {
     max-height: none;
     width: 100%;
     margin: 0 auto;
-    /* border-radius: 0;
-      background: none; */
   }
+
   .main {
     width: auto;
     height: auto;
     max-height: none;
-    /* border-radius: 0; */
   }
 
   .side {
     padding: 0;
+  }
+
+  .card {
+    max-width: 100%;
   }
 }
 

@@ -1,0 +1,94 @@
+.flight_input {
+  display: flex;
+}
+
+#inputDiv {
+  width: 92%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#userinput {
+  width: 100%;
+}
+
+#notes {
+  height: auto;
+  width: 100%;
+  background: #fff;
+  border-radius: 3px;
+  border: none;
+  box-shadow: $box-shadow;
+  padding: 0.3rem 0.4rem;
+  margin-top: 1.6rem;
+}
+
+#ul-packinglist {
+  width: 92%;
+  margin: 0 auto 1rem;
+  list-style-type: none;
+  text-align: left;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0 0.5rem;
+  }
+}
+
+.list {
+  padding: 0.2rem 0 0;
+  border-bottom: 1px solid $color-grey;
+  width: 100%;
+}
+
+.flight_airline {
+  font-size: $normal-font-size;
+  font-weight: 700;
+  color: $clr-grey-1;
+}
+
+.flight_header,
+.flight_departure,
+.flight_arrival {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.flight_icon,
+.flight_dep_time,
+.flight_arr_time {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 3rem;
+  justify-content: center;
+  /* background-color: $color-grey); */
+}
+
+.flight_icon {
+  font-size: 2.5rem;
+}
+
+.flight_information,
+.flight_dep,
+.flight_arr {
+  margin-left: 1rem;
+  width: 100%;
+  /* background-color: $color-grey); */
+}
+
+.flight_date {
+  font-size: $small-font-size;
+}
+
+/* For small devices */
+@media screen and (max-width: 500px) {
+  .flight_input {
+    display: block;
+    width: 100%;
+  }
+}

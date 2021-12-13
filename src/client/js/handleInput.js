@@ -70,27 +70,30 @@ const saveEntries = (type) => {
   if (type.type === 'current') {
     if (listValues.length > 0) {
       element.value = JSON.stringify(listValues);
-      //update q-ty TODO:make it global
-      element.innerText = `(${listValues.length})`;
+      element.querySelector('span').innerText = `(${listValues.length})`;
     } else {
-      element.innerText = ``;
+      element.querySelector('span').innerText = ``;
     }
   }
   // ************************ save modified data for previously saved items *********************** //
   else if (type.type === 'saved') {
     const newValues = JSON.stringify(listValues);
+    console.log(newValues);
     if (listValues.length > 0) {
       stateUpdateTrip(type, newValues);
 
-      //update q-ty TODO:make it global
-      document.querySelectorAll(
-        `[data-id='${type.id}'][data-type='${type.dataType}']`
-      )[0].innerText = `(${listValues.length})`;
+      document
+        .querySelectorAll(
+          `[data-id='${type.id}'][data-type='${type.dataType}']`
+        )[0]
+        .querySelector('span').innerText = `(${listValues.length})`;
     } else {
-      stateUpdateTrip(type, null);
-      document.querySelectorAll(
-        `[data-id='${type.id}'][data-type='${type.dataType}']`
-      )[0].innerText = ``;
+      stateUpdateTrip(type, '[]');
+      document
+        .querySelectorAll(
+          `[data-id='${type.id}'][data-type='${type.dataType}']`
+        )[0]
+        .querySelector('span').innerText = ``;
     }
     updateLocalStorage();
   }
