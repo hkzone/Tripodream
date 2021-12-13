@@ -31,6 +31,7 @@
     "jspdf": "^2.4.0",
     "litepicker": "^2.0.12",
     "litepicker-polyfills-ie11": "^0.0.1",
+    "TagCloud": "^2.2.0",
     "webpack": "^5.64.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.5.0",

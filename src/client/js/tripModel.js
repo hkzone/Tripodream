@@ -1,7 +1,7 @@
 import 'litepicker-polyfills-ie11';
 import Litepicker from 'litepicker';
 import { modal } from './modal';
-import { stateDeleteTrip } from './userData';
+import { state, stateDeleteTrip } from './userData';
 import createEntry from './handleInput';
 import inputComponent from './Components/input';
 
@@ -90,7 +90,9 @@ const openFlight = (event, type) => {
 const deleteTrip = (e) => {
   const id = e.target.getAttribute('data-id');
   stateDeleteTrip(id);
-  e.target.parentElement.parentElement.parentElement.remove();
+  e.target.parentElement.parentElement.parentElement.parentElement.remove();
+  if (state.savedTrips.length === 0)
+    document.getElementById('all-trips').style.display = 'none';
 };
 
 // ********************************************************************************************** //

@@ -13,7 +13,6 @@ const card = (data, type = 'section') => {
     flights = { flights: '[]' },
   } = data;
 
-  console.log(data, JSON.parse(flights.flights));
   const flightsQty = JSON.parse(flights.flights).length;
   const plistQty = JSON.parse(packingList.packingList).length;
   const notesQty = JSON.parse(notes.notes).length;

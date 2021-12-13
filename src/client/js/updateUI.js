@@ -39,12 +39,11 @@ const saveNewTrip = (event) => {
   });
 
   generateCard(state.currentData);
-  //TODO: make this work through api calls
   stateAddTrip(state.currentData);
-
   updateLocalStorage();
   stateClearCurrent();
   document.getElementById('currentTripWrapper').style.visibility = 'hidden';
+  document.getElementById('all-trips').style.display = 'block';
 };
 
 // ********************************************************************************************** //

@@ -1,22 +1,30 @@
 .side_container {
   max-height: calc(100vh - $footer-height);
   overflow-y: scroll;
+  padding-top: 1rem;
+
+  #all-trips {
+    display: none;
+  }
 
   .my_trips {
-    margin: 1rem 0;
+    margin: 0 0 1rem;
   }
 
   #entryHolder {
     margin: 1rem 0.5rem 0rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 1rem;
-    justify-items: center;
     line-height: 1.5;
     padding-bottom: 1rem;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
   }
 
-  #expired-trips {
+  .expired-trip {
     .card_image img {
       -webkit-filter: grayscale(100%);
       -moz-filter: grayscale(100%);
