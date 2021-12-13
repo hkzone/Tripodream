@@ -1,6 +1,6 @@
 import 'litepicker-polyfills-ie11';
 import Litepicker from 'litepicker';
-import { modal } from './modal';
+import { modal } from './utils/modal';
 import { state, stateDeleteTrip } from './userData';
 import createEntry from './handleInput';
 import inputComponent from './Components/input';

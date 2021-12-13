@@ -1,5 +1,4 @@
-import { daysUntil } from '../date';
-import weatherIcon from '../weatherIcon';
+import { daysUntil } from '../utils/date';
 
 // ********************************************************************************************** //
 // ************ Function that returns HTML to display weather information for one day *********** //

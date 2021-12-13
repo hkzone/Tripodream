@@ -1,5 +1,5 @@
-import { getHoursMinutes, dateToString, timeDiff } from '../date';
-import getFlightsData from '../flights';
+import { getHoursMinutes, dateToString, timeDiff } from '../utils/date';
+import getFlightsData from '../utils/flights';
 
 // ********************************************************************************************** //
 // ************ Function that returns HTML to display flight details for pdf printing *********** //

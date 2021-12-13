@@ -1,9 +1,9 @@
-import { modal, modalContent } from './modal';
+import { modal, modalContent } from './utils/modal';
 import { fetchFlightSchedule } from './apiCalls';
 import listItem from './Components/listItem';
 import { state, stateUpdateTrip, updateLocalStorage } from './userData';
 import addFlightData from './Components/flightData';
-import { showAlert } from './alerts';
+import { showAlert } from './utils/alerts';
 
 // ********************************************************************************************** //
 // ************************ function to check if any input field is empty *********************** //
@@ -78,7 +78,6 @@ const saveEntries = (type) => {
   // ************************ save modified data for previously saved items *********************** //
   else if (type.type === 'saved') {
     const newValues = JSON.stringify(listValues);
-    console.log(newValues);
     if (listValues.length > 0) {
       stateUpdateTrip(type, newValues);
 
@@ -118,7 +117,7 @@ const createEntry = (type) => {
   list.innerHTML = `<h3 class='modal_title'>${type.parentName}</h3>
           <div id="inputDiv">
           ${type.inputElemType} 
-          <span class="button_small" id="enter">&plus;</span>
+          <span class="button_small add-button" id="enter">&plus;</span>
         </div>
         <ul id='ul-packinglist'></ul><button id="save">Save</button><button  id="cancel">Cancel</button>`;
   fragment.appendChild(list);

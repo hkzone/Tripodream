@@ -4,7 +4,7 @@ import 'litepicker-polyfills-ie11';
 import { fetchLocationCoordinates, fetchWeather, postData } from './apiCalls';
 import updateUI from './updateUI';
 import { stateAddToCurrent } from './userData';
-import { showAlert } from './alerts';
+import { showAlert } from './utils/alerts';
 
 const picker = new Litepicker({
   element: document.getElementById('datepicker'),

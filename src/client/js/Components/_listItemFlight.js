@@ -1,5 +1,5 @@
-import { getHoursMinutes } from '../date';
-import getFlightsData from '../flights';
+import { getHoursMinutes } from '../utils/date';
+import getFlightsData from '../utils/flights';
 
 // ********************************************************************************************** //
 // ******************** Function that returns HTML to display flight details ******************** //

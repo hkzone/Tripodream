@@ -1,4 +1,4 @@
-import { dateToString } from '../date';
+import { dateToString } from '../utils/date';
 import slider from './slider';
 import nextFlight from './nextFlight';
 import oneDayWeather from './_oneDayWeather';

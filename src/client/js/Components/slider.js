@@ -1,5 +1,4 @@
-import weatherIcon from '../weatherIcon';
-import { dateToString } from '../date';
+import { dateToString } from '../utils/date';
 
 //Slider to display weather forecast
 const slider = ({ weatherData }) => {

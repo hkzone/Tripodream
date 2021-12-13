@@ -9,5 +9,9 @@ footer {
 
   svg {
     margin: 0 0.2rem;
+    color: $text-color;
+    &:hover {
+      color: $clr-grey-5;
+    }
   }
 }

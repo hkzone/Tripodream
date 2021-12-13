@@ -1,4 +1,4 @@
-import { dateToString } from '../date';
+import { dateToString } from '../utils/date';
 
 const addFlightData = (id, fData) => {
   const flightContainer = document.querySelector(

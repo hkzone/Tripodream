@@ -1,4 +1,4 @@
-import { dateToString } from '../date';
+import { dateToString } from '../utils/date';
 
 const nextFlight = ({ flights }) => {
   if (

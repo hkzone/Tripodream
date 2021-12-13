@@ -1,7 +1,7 @@
 import cardComponent from './card';
 import listItem from './listItem';
 import { state } from '../userData';
-import { dateToString } from '../date';
+import { dateToString } from '../utils/date';
 
 // ********************************************************************************************** //
 // ************************** Function to return HTML for pdf printing ************************** //

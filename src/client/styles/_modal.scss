@@ -11,13 +11,15 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  z-index: 9999;
 
   /* Modal Content/Box */
   .modal_content {
     background-color: $background-color;
     border: 1px solid $color-grey;
-    margin: auto 2%;
+    margin: auto;
     padding: 1rem;
+    z-index: 9999;
   }
 
   /* The Close Button */
@@ -25,22 +27,39 @@
     color: $button-modal;
     float: right;
     font-size: 1.5rem;
-    /* font-weight: bold; */
+    &:hover,
+    &:focus {
+      color: $button-modal-hover;
+    }
   }
 
   /* Add and Delete buttons */
   .button_small {
-    color: $button-modal;
-    margin-left: 0.25rem;
+    color: $alert-error;
+    margin-left: 0.35rem;
     font-size: 1.2rem;
     font-weight: 500;
+    padding: 1px 4px;
+    &:hover,
+    &:focus {
+      color: $alert-error-secondary;
+    }
+  }
+
+  .add-button {
+    // background-color: green;
+    color: $alert-success;
+    &:hover,
+    &:focus {
+      color: $alert-success-secondary;
+    }
   }
 
   .close:hover,
   .close:focus,
   .button_small:hover,
   .button_small:focus {
-    color: $button-modal-hover;
+    opacity: 1;
     text-decoration: none;
     cursor: pointer;
   }

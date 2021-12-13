@@ -4,7 +4,7 @@ import TagCloud from 'TagCloud';
 import { state } from './userData';
 import generateCard from './generateCard';
 import { updateTrip, deleteTrip } from './tripModel';
-import processSlider from './imageSlider';
+import processSlider from './utils/imageSlider';
 import downloadTrip from './makePdf';
 import destinations from './data/destinations';
 
@@ -32,10 +32,11 @@ const app = () => {
   const container = '.cloud';
   const options = { radius: 190, initSpeed: 'slow', maxSpeed: 'slow' };
   TagCloud(container, destinations, options);
+
   document.querySelector('.tagcloud').addEventListener('click', (e) => {
     if (e.target.className === 'tagcloud--item') {
       document.querySelector('#city').value = e.target.textContent;
-      // your code here
+      TagCloud.pause();
     }
   });
 };

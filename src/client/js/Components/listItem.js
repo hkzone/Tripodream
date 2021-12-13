@@ -15,7 +15,7 @@ const listItem = (data, customClass, isPDF = false) => {
       ${JSON.stringify({ data: value })}
     </span>
     <span>${value}</span>
-    <span class="button_small">
+    <span class="button button_small">
   &times;
 </span>`;
   return value;

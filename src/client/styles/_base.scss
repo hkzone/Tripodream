@@ -39,6 +39,28 @@ input::placeholder {
   font-size: $small-font-size;
 }
 
+a {
+  /* unvisited link */
+  &:link {
+    text-decoration: none;
+  }
+
+  /* visited link */
+  &:visited {
+    text-decoration: none;
+  }
+
+  /* mouse over link */
+  &:hover {
+    text-decoration: none;
+  }
+
+  /* selected link */
+  &:active {
+    text-decoration: none;
+  }
+}
+
 button {
   padding: 6px 14px;
   border-radius: $radius;
