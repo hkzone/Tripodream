@@ -1,8 +1,12 @@
 # TRIPODREAM
 
+<img src="https://github.com/hkzone/Tripodream.git/blob/master/demo/demo.gif" alt="Tripodream" width="800sentipx">
+
+For live demo please visit 👉 https://senti-app-1.herokuapp.com/
+
 ## Description
 
-TRIPODREAM is a single-page web application that allows users to perform trip planning.
+TRIPODREAM is a single-page web application that allows users to perform trip planning. The app obtains a desired trip location & date from the user and displays weather forecast or predictions and an image of the location using information obtained from external APIs. Users can add flights, packing list and notes for the upcoming trip. All information is stored in local storage so that when they close, then revisit the page, their information is still there. Users can export information to PDF.
 
 ## Technologies Used
 
@@ -92,4 +96,5 @@ $ npm run test
 
 - User will be informed about uncomplete data for the search.
 - There will be notification with description for all errors returned by APIs.
+- If no images are found for user-entered city by Pixabay, image of country will be used instead.
 - There will be notification for any other errors.

@@ -7,7 +7,6 @@ const dotenv = require('dotenv');
 
 dotenv.config({ path: 'config.env' });
 
-const urlWeatherApi = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 const urlVisualCrossingApi =
   'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/';
 const urlGeonamesApi = 'https://secure.geonames.org/searchJSON?q=';
@@ -129,37 +128,6 @@ exports.getLocationCoordinates = async (req, res) => {
     }
   }
 };
-
-// ********************************************************************************************** //
-// *************************************** Weatherbit Api *************************************** //
-// ********************************************************************************************** //
-
-// exports.getWeather = async (req, res) => {
-//   try {
-//     const response = await axios.get(
-//       `${urlWeatherApi}&lat=${req.params.lat}&lon=${req.params.lon}&key=${process.env.apiKeyWeather}`
-//     );
-//     res.status(200).json({
-//       status: 'success',
-//       data: response.data,
-//     });
-//   } catch (err) {
-//     if (err.response) {
-//       // The request was made and the server responded with a status code
-//       console.log('Error', err.message);
-//       res.status(err.response.status || 400).json({
-//         status: 'error',
-//         data: err.response.data.error || err.message,
-//       });
-//     } else {
-//       //The request was made but no response was received or some other error occurred
-//       console.log('Error', err.message);
-//       res
-//         .status(400)
-//         .json({ status: 'error', data: `Api error ${err.message} ` });
-//     }
-//   }
-// };
 
 // ********************************************************************************************** //
 // ************************************* VisualCrossing Api ************************************* //
