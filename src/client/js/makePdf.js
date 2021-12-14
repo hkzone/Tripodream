@@ -18,7 +18,7 @@ const downloadTrip = (e, type = 'saved') => {
     // eslint-disable-next-line new-cap
     const pdf = new jsPDF('p', 'pt', [795, 1245]);
     const pdfContent = document.querySelector('.pdf-content');
-    pdfContent.style.zoom = 'normal';
+    pdfContent.style.transform = 'none';
     pdfContent.style.border = 'none';
     pdf.html(document.querySelector('#pdf'), {
       callback: () => {

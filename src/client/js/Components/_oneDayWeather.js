@@ -23,7 +23,7 @@ const oneDayWeather = (data) => {
 
   const daysAway = daysUntil(data.startDate);
   let forecastOrPredicted = '';
-  if (data.allData.weatherData.days[0].source === 'fcst') {
+  if (data.allData.weatherData.days[0].source !== 'stats') {
     forecastOrPredicted = 'forecasted';
   } else {
     forecastOrPredicted = 'predicted, based on historical data';

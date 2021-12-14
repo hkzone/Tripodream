@@ -20,7 +20,9 @@
   }
 
   .pdf-content {
-    zoom: 50%;
+    -webkit-transform: scale(0.44);
+    transform: scale(0.44);
+    transform-origin: center top;
     min-height: 622pt;
     overflow: scroll;
     padding: 0 10px;
