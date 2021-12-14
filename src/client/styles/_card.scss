@@ -7,6 +7,21 @@
   justify-content: space-between;
   flex-direction: column;
 
+  .section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card_body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    h5 {
+      justify-self: flex-start;
+    }
+  }
   .card_image {
     position: relative;
     overflow: hidden;

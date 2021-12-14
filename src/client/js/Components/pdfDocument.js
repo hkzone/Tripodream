@@ -6,11 +6,20 @@ import { dateToString } from '../utils/date';
 // ********************************************************************************************** //
 // ************************** Function to return HTML for pdf printing ************************** //
 // ********************************************************************************************** //
-const pdfDocument = (id) => {
-  const data = state.savedTrips.filter((el) => el.id === id)[0];
+const pdfDocument = (id, type) => {
+  // eslint-disable-next-line one-var
+  let data;
+
+  if (type === 'saved') {
+    data = state.savedTrips.filter((el) => el.id === id)[0];
+  } else {
+    data = state.currentData;
+  }
+
   const flightsArr = JSON.parse(data.flights.flights || '[]');
   const notesArr = JSON.parse(data.notes.notes || '[]');
   const packingArr = JSON.parse(data.packingList.packingList || '[]');
+
   return `<div id="pdf-modal" class="modal">
   <div class="pdf-buttons"> <button class="button button-grey print-pdf">print pdf
     </button>

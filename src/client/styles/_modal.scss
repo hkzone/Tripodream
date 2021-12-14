@@ -82,6 +82,12 @@
 /*=============== BREAKPOINTS ===============*/
 
 /* For small devices */
+@media screen and (max-width: 575px) {
+  .modal_content {
+    display: block;
+    width: 100%;
+  }
+}
 @media screen and (min-width: 576px) {
   .modal_content {
     margin: auto;

@@ -1,4 +1,6 @@
 .cloud {
+  display: flex;
+  align-items: center;
   .tagcloud {
     margin: 0 auto;
   }
@@ -12,8 +14,5 @@
 
 .inspirations {
   margin: 0.8rem 0.5rem 1.4rem;
-
-  min-width: 400px;
-  max-width: 80%;
   margin: 0 auto 1.5rem;
 }

@@ -1,12 +1,12 @@
 import { jsPDF } from 'jspdf';
 import pdfDocument from './Components/pdfDocument';
 
-const downloadTrip = (e) => {
+const downloadTrip = (e, type = 'saved') => {
   const id = e.target.getAttribute('data-id');
 
   // ********************** Create and display printable version of the trip ********************** //
   const pdfHTML = document.createElement('div');
-  pdfHTML.innerHTML = pdfDocument(id);
+  pdfHTML.innerHTML = pdfDocument(id, type);
   document.body.appendChild(pdfHTML);
 
   const pdfModal = document.querySelector('#pdf-modal');

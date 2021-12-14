@@ -31,9 +31,7 @@ const card = (data, type = 'section') => {
     <h3>
       <span class='big_slash'>/</span>${allData.city}, ${allData.country}
     </h3>
-
-    <div class='card_body' data-id="${id}-wrapper">
-      <h5>Departing: ${dateToString(allData.startDate, true)}</h5>
+     <h5>Departing: ${dateToString(allData.startDate, true)}</h5>
       ${
         type !== 'pdf'
           ? ` <div class="flight_container">
@@ -41,8 +39,11 @@ const card = (data, type = 'section') => {
       </div>`
           : ''
       }
+     
+
+    <div class='card_body' data-id="${id}-wrapper">
       <hr class="hr">
-      </h5>
+      
       ${
         // eslint-disable-next-line no-nested-ternary
         type === 'section'

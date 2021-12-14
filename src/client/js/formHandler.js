@@ -71,6 +71,11 @@ const handleSubmit = async (event) => {
       country: location.country,
     });
     await updateUI();
+    stateAddToCurrent({
+      flights: { flights: '[]' },
+      notes: { notes: '[]' },
+      packingList: { packingList: '[]' },
+    });
   } catch (err) {
     console.log(err);
     showAlert('error', err);

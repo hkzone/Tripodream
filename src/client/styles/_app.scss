@@ -17,11 +17,12 @@
 
   .side {
     flex: 1;
+    width: 100%;
   }
 }
 
 .headline {
-  margin-top: 0.4rem;
+  padding-top: 0.4rem;
   font-size: $headline-font-size;
   font-family: $secondary-font;
   color: $clr-brand-primary;
@@ -41,7 +42,6 @@
   }
 
   .main {
-    width: auto;
     height: auto;
     max-height: none;
   }

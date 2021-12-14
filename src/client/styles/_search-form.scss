@@ -30,6 +30,7 @@
   margin: 0.8rem 0 0.8rem;
   background: transparent;
   width: 95%;
+  font-size: $normal-font-size;
 
   &:focus ~ label,
   &:valid ~ label {

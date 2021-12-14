@@ -62,25 +62,27 @@ const saveEntries = (type) => {
   [...items].forEach((el) => {
     listValues.push({ data: el.innerText });
   });
+  const newValues = JSON.stringify(listValues);
 
   // **************************** save all data from the current search *************************** //
   const element = document.querySelectorAll(
     `[data-id='${type.id}'][data-type='${type.dataType}']`
   )[0];
+
   if (type.type === 'current') {
     if (listValues.length > 0) {
+      stateUpdateTrip(type, newValues, 'currentData');
       element.value = JSON.stringify(listValues);
       element.querySelector('span').innerText = `(${listValues.length})`;
     } else {
       element.querySelector('span').innerText = ``;
+      stateUpdateTrip(type, '[]', 'currentData');
     }
   }
   // ************************ save modified data for previously saved items *********************** //
   else if (type.type === 'saved') {
-    const newValues = JSON.stringify(listValues);
     if (listValues.length > 0) {
       stateUpdateTrip(type, newValues);
-
       document
         .querySelectorAll(
           `[data-id='${type.id}'][data-type='${type.dataType}']`
@@ -143,7 +145,6 @@ const createEntry = (type) => {
     const data = JSON.parse(
       trip[0][`${savedObjectValues}`][`${savedObjectValues}`] || '[]'
     );
-    console.log(data);
     if (data) {
       data.forEach((el) => createLi(JSON.parse(el.data).data, option));
     }

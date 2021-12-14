@@ -30,8 +30,25 @@ const app = () => {
   }
   // ****************************** Create tag cloud for destinations ***************************** //
   const container = '.cloud';
-  const options = { radius: 190, initSpeed: 'slow', maxSpeed: 'slow' };
-  TagCloud(container, destinations, options);
+  // ************************* determine width of tagcloud to be rendered ************************* //
+  const vw = Math.max(
+    document.documentElement.clientWidth || 0,
+    window.innerWidth || 0
+  );
+  const radius = vw < 768 ? vw / 2.5 : vw / 5.5;
+
+  // ********************** determine how many items to show and randomize ********************** //
+
+  // Shuffle array
+  const shuffled = destinations.sort(() => 0.5 - Math.random());
+
+  const n = Math.floor(radius / 10);
+  // Get sub-array of first n elements after shuffled
+  const selected = shuffled.slice(0, n);
+
+  // ******************************************* Render ****************************************** //
+  const options = { radius, initSpeed: 'slow', maxSpeed: 'slow' };
+  TagCloud(container, selected, options);
 
   document.querySelector('.tagcloud').addEventListener('click', (e) => {
     if (e.target.className === 'tagcloud--item') {

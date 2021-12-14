@@ -9,6 +9,7 @@ import {
 import cardComponent from './Components/card';
 import { updateTrip } from './tripModel';
 import generateCard from './generateCard';
+import downloadTrip from './makePdf';
 
 // ********************************************************************************************** //
 // **************************************** Save new trip *************************************** //
@@ -74,7 +75,8 @@ const updateUI = async () => {
     if (classList.contains('update_data')) updateTrip(event, 'current');
     else if (classList.contains('save-btn')) saveNewTrip(event);
     else if (classList.contains('cancel-btn')) mainWrapper.innerHTML = '';
-    // else if (classList.contains('download_data')) downloadTrip(event);
+    else if (classList.contains('download_data'))
+      downloadTrip(event, 'current');
   });
 };
 

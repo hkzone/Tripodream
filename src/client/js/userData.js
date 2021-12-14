@@ -24,14 +24,21 @@ const stateAddTrip = (data) => {
 };
 
 // ************************************** Update saved trip ************************************* //
-const stateUpdateTrip = (type, newValues) => {
-  state.savedTrips = state.savedTrips.map((el) => {
-    if (el.id !== type.id) return el;
-    return {
-      ...el,
+const stateUpdateTrip = (type, newValues, savedOrCurrent = 'savedTrips') => {
+  if (savedOrCurrent === 'savedTrips') {
+    state.savedTrips = state.savedTrips.map((el) => {
+      if (el.id !== type.id) return el;
+      return {
+        ...el,
+        [type.nameOfObjectField]: { [type.nameOfObjectField]: newValues },
+      };
+    });
+  } else {
+    state.currentData = {
+      ...state.currentData,
       [type.nameOfObjectField]: { [type.nameOfObjectField]: newValues },
     };
-  });
+  }
 };
 
 // ***************************************** Delete trip **************************************** //
