@@ -83,8 +83,11 @@ const card = (data, type = 'section') => {
               </button>
               </div>`
           : ` </div>
-              <button data-id=${id} class="save-btn">Save trip</button>
-              <button data-id=${id} class="cancel-btn">Cancel</button>`
+          <div class="buttons"> 
+            <button data-id=${id} class="save-btn">Save trip</button>
+            <button data-id=${id} class="cancel-btn">Cancel</button>
+          </div>
+             `
       }
     </div>`
           : ''

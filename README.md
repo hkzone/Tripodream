@@ -8,6 +8,8 @@ For live demo please visit 👉 https://tripodream.herokuapp.com/
 
 TRIPODREAM is a single-page web application that allows users to perform trip planning. The app obtains a desired trip location & date from the user and displays weather forecast or predictions and an image of the location using information obtained from external APIs. Users can add flights, packing list and notes for the upcoming trip. All information is stored in local storage so that when they close, then revisit the page, their information is still there. Users can export information to PDF.
 
+This project was final capstone project for Udacity Frontend Web Developer Nanodegree.
+
 ## Technologies Used
 
 - JavaScript
