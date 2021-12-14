@@ -2,7 +2,7 @@
 
 <img src="https://github.com/hkzone/Tripodream.git/blob/master/demo/demo.gif" alt="Tripodream" width="800sentipx">
 
-For live demo please visit 👉 https://senti-app-1.herokuapp.com/
+For live demo please visit 👉 https://tripodream.herokuapp.com/
 
 ## Description
 
