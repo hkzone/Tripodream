@@ -1,7 +1,7 @@
 {
-  "name": "weather-journal-app",
+  "name": "Tripodream",
   "version": "1.0.0",
-  "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.",
+  "description": "##TRIPODREAM is a single-page web application that allows users to perform trip planning. T",
   "main": "server.js",
   "scripts": {
     "test": "jest",
