@@ -7,6 +7,7 @@ const daysUntil = (date) =>
 // ********************************************************************************************** //
 // **************** function that converts date to string with different options **************** //
 // ********************************************************************************************** //
+
 const dateToString = (
   date,
   showYear = false,
@@ -18,8 +19,13 @@ const dateToString = (
     day: 'numeric',
   };
   if (showYear) options = { ...options, year: 'numeric' };
-  if (showTime) options = { ...options, hour: 'numeric', minute: 'numeric' };
   if (showWeekDay) options = { ...options, weekday: 'short' };
+  if (showTime) {
+    const regex = /(.*T)+(([01]?[0-9]|2[0-3]):[0-5][0-9])/;
+    const found = date.match(regex)[0];
+    options = { ...options, hour: 'numeric', minute: 'numeric' };
+    return new Date(found).toLocaleDateString('en-GB', options);
+  }
 
   return new Date(date).toLocaleDateString('en-GB', options);
 };
@@ -43,7 +49,11 @@ const timeDiff = (date1, date2) => {
 // ********************************************************************************************** //
 // ********************** function that returns hh:mm of the time provided ********************** //
 // ********************************************************************************************** //
-const getHoursMinutes = (date) => `
-    ${new Date(date).getHours()}:${new Date(date).getMinutes()}`;
+const getHoursMinutes = (date) => {
+  const regex = /(?:T)+(([01]?[0-9]|2[0-3]):[0-5][0-9])/;
+  const found = date.match(regex)[1];
+  return `
+    ${found}`;
+};
 
 export { dateToString, daysUntil, getHoursMinutes, timeDiff };

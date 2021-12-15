@@ -1,14 +1,74 @@
-# TRIPODREAM
+<h1 align="center">
+<br>
+  <a href="https://tripodream.herokuapp.com/"><img src="./demo/icon.png" alt="Tripodream" width="180"></a>
+  <br>
+  Tripodream
+  <br>
+</h1>
 
-<img src="https://github.com/hkzone/Tripodream.git/blob/master/demo/demo.gif" alt="Tripodream" width="800sentipx">
+ <p align="center">
+   <a href="#deployed-version">Demo</a> •
+   <a href="#description">Description</a> •
+   <a href="#key-features">Key Features</a> •
+   <a href="#demonstration">Demonstration</a> •
+   <a href="#technologies-used">Technologies Used</a> •
+   <a href="#getting-started">Getting Started</a> •
+   <a href="#testing">Testing</a> •
+   <a href="#error-handling">Error Handling</a>
+
+</p>
+
+## Deployed Version
 
 For live demo please visit 👉 https://tripodream.herokuapp.com/
 
 ## Description
 
-TRIPODREAM is a single-page web application that allows users to perform trip planning. The app obtains a desired trip location & date from the user and displays weather forecast or predictions and an image of the location using information obtained from external APIs. Users can add flights, packing list and notes for the upcoming trip. All information is stored in local storage so that when they close, then revisit the page, their information is still there. Users can export information to PDF.
+TRIPODREAM is a single-page web application that allows users to perform trip planning. The app obtains a desired trip location & date from the user and displays weather forecast or predictions and an image of the location using information obtained from external APIs. Users can add flights, packing list and notes for the upcoming trip. All information is stored in local storage so that when they close, then revisit the page, their information is still there. Users can edit they trips and export them to PDF.
 
-This project was final capstone project for Udacity Frontend Web Developer Nanodegree.
+This project was final capstone project for Udacity Frontend Web Developer Nanodegree which I graduated from on December 14, 2021.
+
+<img src="./demo/udacity.jpg" alt="udacity" width="500px">
+
+## Key Features
+
+- Add new trip
+  - Display forecasted or predicted weather from VisualCrossing API
+  - Incorporate icons into forecast
+  - Display image of the location (or the country) from Pixabay API
+  - Display trip countdown
+- Add additional information for the trip
+  - Multiple flights, for each flight extra data is pulled from Amadeus API
+  - Todo list/packing list
+  - Notes
+- Multiple trips
+  - Use Local Storage to save the data
+  - Automatically sort additional trips by countdown
+  - Next upcoming flight is displayed
+  - Move expired trips to bottom and have them greyed out
+  - Allow the user to remove the trip
+- Export
+  - Allow user to export they trip to PDF
+- Travel inspirations
+  - Tag cloud with random destinations is displayed, onclick this destination is added to the search form
+
+## Demonstration
+
+#### Home Page :
+
+![home](./demo/home.gif)
+
+#### Add new trip:
+
+![add-new-trip](./demo/add.gif)
+
+#### Edit saved trips :
+
+![edit-trips](./demo/edit.gif)
+
+#### Print pdf :
+
+![print-pdf](./demo/pdf.gif)
 
 ## Technologies Used
 
