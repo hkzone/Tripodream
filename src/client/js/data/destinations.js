@@ -32,10 +32,9 @@ module.exports = [
   'Crete',
   'Doha',
   'Edinburgh',
-  'Galápagos',
-  'Ilha Caldeira',
-  'São Paulo',
+  'Galapagos',
+  'Sao Paulo',
   'Singapore',
   'St. Moritz',
-  'Yucatán',
+  'Yucatan',
 ];
